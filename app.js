@@ -5,14 +5,10 @@ import mongoose from 'mongoose';
 const app = express();
 dotenv.config();
 
-// const stuffRoutes = require('./routes/stuff');
-// const userRoutes = require('./routes/user');
-
+// Mongo DB conncetion
+const database = process.env.MONGOLAB_URI;
 mongoose
-  .connect(
-    `mongodb+srv://${process.env.DB_ID}:${process.env.DB_PWD}@cluster0.axdxwco.mongodb.net/?retryWrites=true&w=majority`,
-    { useNewUrlParser: true, useUnifiedTopology: true }
-  )
+  .connect(database, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
