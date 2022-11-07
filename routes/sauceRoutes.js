@@ -6,8 +6,9 @@ import {
   getOne,
   modify,
 } from '../controllers/sauceController.js';
+
 import auth from '../middleware/auth.js';
-import Sauce from '../models/sauce.js';
+import multer from '../middleware/multer-config.js';
 
 const sauceRoutes = Router();
 
@@ -15,9 +16,9 @@ sauceRoutes.get('/' + '', auth, getAll);
 
 sauceRoutes.get('/:id', auth, getOne);
 
-sauceRoutes.post('/', auth, create);
+sauceRoutes.post('/', auth, multer, create);
 
-sauceRoutes.put('/:id', auth, modify);
+sauceRoutes.put('/:id', auth, multer, modify);
 
 sauceRoutes.delete('/:id', auth, deleteOne);
 

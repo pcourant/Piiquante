@@ -3,10 +3,16 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import sauceRoutes from './routes/sauceRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
-dotenv.config();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
+dotenv.config();
 // Mongo DB conncetion
 const database = process.env.MONGOLAB_URI;
 mongoose
