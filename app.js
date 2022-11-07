@@ -1,6 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import sauceRoutes from './routes/sauceRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 const app = express();
 dotenv.config();
@@ -27,7 +29,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use('/api/stuff', stuffRoutes);
-// app.use('/api/auth', userRoutes);
+app.use('/api/sauces', sauceRoutes);
+app.use('/api/auth', userRoutes);
 
 export default app;
