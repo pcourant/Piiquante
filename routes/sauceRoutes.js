@@ -1,10 +1,11 @@
 import { Router } from 'express';
 import {
-  create,
+  createOne,
   deleteOne,
   getAll,
   getOne,
-  modify,
+  modifyOne,
+  likeOne,
 } from '../controllers/sauceController.js';
 
 import auth from '../middleware/auth.js';
@@ -16,9 +17,11 @@ sauceRoutes.get('/' + '', auth, getAll);
 
 sauceRoutes.get('/:id', auth, getOne);
 
-sauceRoutes.post('/', auth, multer, create);
+sauceRoutes.post('/', auth, multer, createOne);
 
-sauceRoutes.put('/:id', auth, multer, modify);
+sauceRoutes.put('/:id', auth, multer, modifyOne);
+
+sauceRoutes.post('/:id/like', auth, likeOne);
 
 sauceRoutes.delete('/:id', auth, deleteOne);
 
